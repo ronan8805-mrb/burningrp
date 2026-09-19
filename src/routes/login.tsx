@@ -1,6 +1,6 @@
 import { createFileRoute, Navigate } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
-import { GROK_PROVIDERS, authClient, authEnabled, signIn } from "@/lib/auth/client";
+import { useState, type FormEvent } from "react";
+import { authClient, authEnabled } from "@/lib/auth/client";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 
 export const Route = createFileRoute("/login")({
@@ -24,13 +24,6 @@ function AuthCard() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const [oauthBusy, setOauthBusy] = useState("");
-  const [bounced, setBounced] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("error")) setBounced(true);
-  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -136,9 +129,9 @@ function AuthCard() {
             autoComplete={mode === "up" ? "new-password" : "current-password"}
           />
         </div>
-        {error || bounced ? (
+        {error ? (
           <p className="text-sm text-fire" role="alert">
-            {error || "Google / X could not finish. Try again, or use email."}
+            {error}
           </p>
         ) : null}
         <button
@@ -149,49 +142,6 @@ function AuthCard() {
           {busy ? "Working…" : mode === "in" ? "Enter" : "Create account"}
         </button>
       </form>
-
-      {authEnabled ? (
-        <div className="mt-8 space-y-2">
-          <p className="stamp text-sand">One tap</p>
-          {GROK_PROVIDERS.map((p) => (
-            <button
-              key={p.providerId}
-              type="button"
-              disabled={Boolean(oauthBusy)}
-              onClick={() => {
-                setOauthBusy(p.providerId);
-                setError("");
-                void signIn(p.providerId, {
-                  callbackURL: "/account",
-                  errorCallbackURL: "/login?error=oauth",
-                }).catch((err) => {
-                  setOauthBusy("");
-                  setError(err instanceof Error ? err.message : "Could not continue.");
-                });
-              }}
-              className="ui press inline-flex min-h-12 w-full items-center justify-center gap-3 border border-iron bg-hat text-cream hover:border-sand disabled:opacity-60"
-            >
-              <ProviderMark id={p.providerId} />
-              {oauthBusy === p.providerId ? "Opening…" : `Continue with ${p.label}`}
-            </button>
-          ))}
-        </div>
-      ) : null}
     </main>
-  );
-}
-
-function ProviderMark({ id }: { id: string }) {
-  if (id === "grok-google") {
-    return (
-      <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
-        <path fill="#EA4335" d="M12 10.2v3.6h5.1c-.2 1.2-1.4 3.6-5.1 3.6-3.1 0-5.6-2.6-5.6-5.4S8.9 6.6 12 6.6c1.8 0 3 .7 3.7 1.4l2.5-2.4C16.7 4.2 14.6 3.3 12 3.3 7.4 3.3 3.6 7.1 3.6 12S7.4 20.7 12 20.7c8 0 9.4-7 8.3-10.5H12z" />
-      </svg>
-    );
-  }
-  return (
-    <svg viewBox="0 0 24 24" className="size-4" aria-hidden>
-      <path fill="currentColor" d="M14.7 3h2.8l-6.1 7 7.2 11h-5.6l-4.4-6.6L4.7 21H1.9l6.5-7.5L1.5 3h5.8l4 6.1L14.7 3zm-1 16.2h1.5L6.4 4.7H4.7l9 14.5z" />
-    </svg>
   );
 }
