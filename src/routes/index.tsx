@@ -27,7 +27,7 @@ function Home() {
         <div className="page-pad relative z-10 flex h-full max-w-[1440px] mx-auto flex-col justify-end pb-16">
           <p className="stamp text-sand">SFV · Indoor · 21+</p>
           <h1 className="display mt-3 text-mark text-cream">IN ROPE WE TRUST</h1>
-          <p className="mt-4 max-w-lg text-ash">
+          <p className="mt-4 max-w-lg text-white">
             Cowboy grown. If it don't slap, it ain't Rope. Flower and merch from the rooms.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
