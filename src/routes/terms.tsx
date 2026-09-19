@@ -28,7 +28,7 @@ function TermsPage() {
         <section>
           <h2 className="display text-2xl text-cream">Rope Burn</h2>
           <p className="mt-3">
-            Date TBA. Festival tickets are not on sale yet. Vendor letters are inquiries, not confirmed booths.
+            Date TBA. Two-day festival. Tickets are not on sale yet. Vendor letters are inquiries, not confirmed booths.
           </p>
         </section>
         <section>

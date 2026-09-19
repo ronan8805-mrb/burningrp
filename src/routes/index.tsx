@@ -81,9 +81,9 @@ function Home() {
         <div className="page-pad relative z-10 mx-auto max-w-[1440px] py-24">
           <p className="stamp text-sand">Burning Rope Pharms presents</p>
           <h2 className="display mt-4 text-display">ROPE BURN</h2>
-          <p className="ui mt-3 text-sm text-cream">the Rodeo · three days · the Burning Grounds</p>
+          <p className="ui mt-3 text-sm text-cream">the Rodeo · two days · the Burning Grounds</p>
           <p className="mt-6 max-w-lg text-ash">
-            Flower festival and expo. Date TBA. The list hears first.
+            Two-day flower festival and expo. Date TBA. The list hears first.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <BrandLink to="/rope-burn" variant="fire">

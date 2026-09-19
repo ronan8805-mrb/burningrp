@@ -34,7 +34,7 @@ function RopeBurnPage() {
           <h2 className="display mt-3 text-section">{festival.creed}</h2>
           <p className="mt-5 max-w-xl text-ash">{festival.where}</p>
           <p className="mt-5 max-w-xl text-ash">
-            Printed title: Rope Burn. Place: the Burning Grounds. Spoken: the Rodeo. Date TBA — the list hears first.
+            Printed title: Rope Burn. Place: the Burning Grounds. Spoken: the Rodeo. Two days. Date TBA — the list hears first.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
@@ -51,8 +51,8 @@ function RopeBurnPage() {
       </section>
 
       <section className="page-pad mx-auto max-w-[1440px] pb-8">
-        <p className="stamp text-sand">Three days</p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <p className="stamp text-sand">Two days</p>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
           {festival.days.map((day) => (
             <article key={day.id} className="border border-iron bg-hat px-5 py-6">
               <p className="stamp text-fire">{day.hours}</p>
@@ -75,7 +75,7 @@ function RopeBurnPage() {
             Growers, hash, paper, and iron under a barn roof. Stages after dark. Merch in the barn. 21+ throughout.
           </p>
           <p className="mt-4 text-ash">
-            Tickets are not on sale yet. When the Saturday exists, it goes to the list, then here.
+            Tickets are not on sale yet. When the weekend exists, it goes to the list, then here.
           </p>
           <BrandLink to="/merch" variant="ghost" className="mt-8">
             Shop merch

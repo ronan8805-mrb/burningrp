@@ -474,20 +474,14 @@ export const festival = {
   spoken: "the Rodeo",
   place: "the Burning Grounds",
   where: "San Fernando Valley. Canyon edge.",
-  when: "Date TBA · three days · 21+",
-  creed: "A three-day flower festival and expo. Booths, stages, and a Sunday close at the Burning Grounds.",
+  when: "Date TBA · two days · 21+",
+  creed: "A two-day flower festival and expo. Booths, stages, and a Sunday close at the Burning Grounds.",
   days: [
-    {
-      id: "branding",
-      name: "Friday — The Branding",
-      hours: "12:00 – 02:00",
-      line: "Gates and 21+ check. Expo floor opens, merch barn, first sets on Dust Stage.",
-    },
     {
       id: "rodeo",
       name: "Saturday — The Rodeo",
       hours: "11:00 – 02:00",
-      line: "Main day. Grower village, talks, cut judging, Iron Stage after dark.",
+      line: "Gates and 21+ check. Expo floor, grower village, cut judging, merch barn. Iron Stage after dark.",
     },
     {
       id: "burn",
