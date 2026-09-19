@@ -3,6 +3,7 @@ import { BrandLink } from "@/components/brand-button";
 import { CityField } from "@/components/city-field";
 import { CutCard } from "@/components/cut-card";
 import { EmailIron } from "@/components/email-iron";
+import { HeroBackdrop } from "@/components/hero-backdrop";
 import { DoctrineMarquee } from "@/components/marquee";
 import { money } from "@/lib/utils";
 import { useCatalog } from "@/lib/use-catalog";
@@ -21,14 +22,7 @@ function Home() {
   return (
     <main>
       <section className="relative h-svh min-h-[36rem] overflow-hidden">
-        <picture>
-          <source media="(max-width: 767px)" srcSet="/images/hero-cowboy-portrait.jpg" />
-          <img
-            src="/images/hero-cowboy.jpg"
-            alt="Ivory skeleton cowboy in a black studded hat, desert night, fire and rope"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </picture>
+        <HeroBackdrop />
         <div className="absolute inset-0 bg-linear-to-t from-bone via-bone/40 to-bone/15" />
         <div className="page-pad relative z-10 flex h-full max-w-[1440px] mx-auto flex-col justify-end pb-16">
           <p className="stamp text-sand">SFV · Indoor · 21+</p>
