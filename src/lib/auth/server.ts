@@ -182,6 +182,19 @@ const grokOAuthPlugin = authConfigured
     })
   : null;
 
+const googleId = env("GOOGLE_CLIENT_ID");
+const googleSecret = env("GOOGLE_CLIENT_SECRET");
+const twitterId = env("TWITTER_CLIENT_ID") ?? env("X_CLIENT_ID");
+const twitterSecret = env("TWITTER_CLIENT_SECRET") ?? env("X_CLIENT_SECRET");
+const nativeSocial = {
+  ...(googleId && googleSecret
+    ? { google: { clientId: googleId, clientSecret: googleSecret } }
+    : {}),
+  ...(twitterId && twitterSecret
+    ? { twitter: { clientId: twitterId, clientSecret: twitterSecret } }
+    : {}),
+};
+
 function signingSecret(): string {
   const set = env("BETTER_AUTH_SECRET");
   if (set) return set;
@@ -216,6 +229,8 @@ export const auth = betterAuth({
       enabled: true,
       trustedProviders: [
         ...GROK_PROVIDERS.map((p) => p.providerId),
+        "google",
+        "twitter",
         GATE_PROVIDER_ID,
       ],
       // X's synthetic email is never "verified", so don't gate linking on the
@@ -232,6 +247,7 @@ export const auth = betterAuth({
 
   // Local email/password — toggled only via `./email-password` (not a plugin).
   ...(emailAndPasswordEnabled ? { emailAndPassword: { enabled: true } } : {}),
+  ...(Object.keys(nativeSocial).length ? { socialProviders: nativeSocial } : {}),
 
   // `__Host-` prefixed cookies: the browser REFUSES any same-named cookie that
   // carries a `Domain` attribute, so a sibling `*.grok.me` app cannot "toss" a

@@ -125,9 +125,6 @@ export async function signIn(
     const token = await waitForPopupToken(popup);
     if (!token) throw new Error("Sign-in was cancelled or failed");
     setBearerToken(token);
-    // Refresh the client session store with the bearer attached (onRequest).
-    // Avoid a full iframe reload when we're already on the destination — that
-    // reload was the slow "still loading after the popup closed" feeling.
     try {
       await authClient.getSession();
     } catch {
@@ -141,6 +138,20 @@ export async function signIn(
       }
     }
     return;
+  }
+
+  const social =
+    providerId === "grok-google" ? "google" : providerId === "grok-x" ? "twitter" : null;
+  if (social) {
+    const native = await authClient.signIn.social({
+      provider: social,
+      callbackURL,
+      errorCallbackURL,
+    });
+    if (!native.error && native.data?.url) {
+      window.location.href = native.data.url;
+      return;
+    }
   }
 
   const { data, error } = await authClient.signIn.oauth2({
