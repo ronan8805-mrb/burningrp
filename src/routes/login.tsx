@@ -1,5 +1,5 @@
 import { createFileRoute, Navigate } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { GROK_PROVIDERS, authClient, authEnabled, signIn } from "@/lib/auth/client";
 import { useCurrentUserState } from "@/lib/auth/use-current-user";
 
@@ -24,6 +24,13 @@ function AuthCard() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [oauthBusy, setOauthBusy] = useState("");
+  const [bounced, setBounced] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("error")) setBounced(true);
+  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -129,9 +136,9 @@ function AuthCard() {
             autoComplete={mode === "up" ? "new-password" : "current-password"}
           />
         </div>
-        {error ? (
+        {error || bounced ? (
           <p className="text-sm text-fire" role="alert">
-            {error}
+            {error || "Google / X could not finish. Try again, or use email."}
           </p>
         ) : null}
         <button
@@ -150,11 +157,22 @@ function AuthCard() {
             <button
               key={p.providerId}
               type="button"
-              onClick={() => signIn(p.providerId, { callbackURL: "/account" })}
-              className="ui press inline-flex min-h-12 w-full items-center justify-center gap-3 border border-iron bg-hat text-cream hover:border-sand"
+              disabled={Boolean(oauthBusy)}
+              onClick={() => {
+                setOauthBusy(p.providerId);
+                setError("");
+                void signIn(p.providerId, {
+                  callbackURL: "/account",
+                  errorCallbackURL: "/login?error=oauth",
+                }).catch((err) => {
+                  setOauthBusy("");
+                  setError(err instanceof Error ? err.message : "Could not continue.");
+                });
+              }}
+              className="ui press inline-flex min-h-12 w-full items-center justify-center gap-3 border border-iron bg-hat text-cream hover:border-sand disabled:opacity-60"
             >
               <ProviderMark id={p.providerId} />
-              Continue with {p.label}
+              {oauthBusy === p.providerId ? "Opening…" : `Continue with ${p.label}`}
             </button>
           ))}
         </div>

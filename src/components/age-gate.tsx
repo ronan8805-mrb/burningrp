@@ -184,7 +184,7 @@ function WantedPoster({ onBack }: { onBack: () => void }) {
     <div className="relative z-10 flex h-full items-center justify-center px-4">
       <div className="wanted-burn relative w-full max-w-sm">
         <span className="burn-ember" aria-hidden />
-        <article className="poster relative px-5 py-6 text-center sm:px-7 sm:py-8">
+        <article className="poster poster-wanted relative px-5 py-6 text-center sm:px-7 sm:py-8">
           <span className="poster-nail top-2 left-2" />
           <span className="poster-nail top-2 right-2" />
           <span className="poster-nail bottom-2 left-2" />
@@ -194,17 +194,17 @@ function WantedPoster({ onBack }: { onBack: () => void }) {
             alt="Burning Rope Pharms"
             className="poster-brand mx-auto"
           />
-          <p className="stamp mt-3 text-ink/70">Burning Rope County</p>
-          <h1 className="display mt-1 text-5xl leading-none text-ink">WANTED</h1>
-          <p className="ui mt-1 text-sm text-rust">Under 21</p>
-          <hr className="poster-rule my-4" />
-          <p className="text-sm leading-snug text-ink">
+          <p className="stamp mt-3 text-cream/70">Burning Rope County</p>
+          <h1 className="display mt-1 text-5xl leading-none text-cream">WANTED</h1>
+          <p className="ui mt-1 text-sm text-fire">Under 21</p>
+          <hr className="poster-rule poster-rule-wanted my-4" />
+          <p className="text-sm leading-snug text-cream">
             You are not allowed into this website.
           </p>
           <button
             type="button"
             onClick={onBack}
-            className="ui press mt-5 inline-flex min-h-11 w-full items-center justify-center border-2 border-ink px-3 text-ink"
+            className="ui press mt-5 inline-flex min-h-11 w-full items-center justify-center border-2 border-cream px-3 text-cream"
           >
             Go back
           </button>

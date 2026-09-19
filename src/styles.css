@@ -177,6 +177,36 @@
     );
   }
 
+  .poster-rule-wanted {
+    background: repeating-linear-gradient(
+      90deg,
+      var(--color-cream) 0 8px,
+      transparent 8px 12px
+    );
+  }
+
+  .poster-wanted {
+    background:
+      radial-gradient(120% 90% at 50% 0%, #5a1c0c 0%, #1a0a06 42%, #070504 100%),
+      #070504;
+    color: var(--color-cream);
+    box-shadow:
+      0 20px 50px rgb(0 0 0 / 0.55),
+      inset 0 0 0 2px var(--color-cream),
+      inset 0 0 0 8px #070504,
+      inset 0 0 0 9px color-mix(in srgb, var(--color-fire) 80%, #3a1408);
+  }
+
+  .wanted-burn .poster-wanted {
+    box-shadow:
+      0 0 0 3px #1a0a06,
+      0 0 0 8px #c2410c,
+      0 0 28px 6px rgb(227 90 27 / 0.45),
+      inset 0 0 0 2px var(--color-cream),
+      inset 0 0 0 8px #070504,
+      inset 0 0 0 9px var(--color-fire);
+  }
+
   .poster-nail {
     position: absolute;
     width: 14px;
@@ -200,7 +230,7 @@
     filter: drop-shadow(0 18px 28px rgb(0 0 0 / 0.55));
   }
 
-  .wanted-burn .poster {
+  .wanted-burn .poster:not(.poster-wanted) {
     box-shadow:
       0 0 0 3px #1a0a06,
       0 0 0 7px #3b160c,
