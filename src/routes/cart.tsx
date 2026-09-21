@@ -52,8 +52,8 @@ function CartPage() {
           {lines.map((line) => (
             <li key={line.id} className="grid grid-cols-[6.5rem_1fr] gap-5 py-6 sm:grid-cols-[8rem_1fr]">
               <Link
-                to={line.kind === "cut" ? "/cuts/$slug" : "/merch"}
-                params={line.kind === "cut" ? { slug: line.slug } : undefined}
+                to={line.kind === "cut" ? "/cuts/$slug" : "/merch/$slug"}
+                params={{ slug: line.slug }}
               >
                 <img src={line.image} alt="" className="aspect-square w-full object-cover" />
               </Link>

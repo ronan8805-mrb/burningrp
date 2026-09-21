@@ -104,7 +104,7 @@ function AccountPage() {
         {earlyMerch.length > 0 ? (
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
             {earlyMerch.map((item) => (
-              <Link key={item.slug} to="/merch" className="border border-iron bg-hat px-5 py-5 press">
+              <Link key={item.slug} to="/merch/$slug" params={{ slug: item.slug }} className="border border-iron bg-hat px-5 py-5 press">
                 <h3 className="display text-2xl">{item.name}</h3>
                 <p className="mt-2 text-sm text-ash">{item.line}</p>
                 <p className="mt-3 text-sm text-cream">{money(item.price)}</p>

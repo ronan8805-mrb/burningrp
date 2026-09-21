@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { MERCH_FILTERS, type GalleryShot, type MerchItem } from "@/lib/data";
-import { AddToBag } from "@/components/add-to-bag";
-import { Lightbox } from "@/components/lightbox";
+import { useMemo } from "react";
+import { MERCH_FILTERS, type MerchItem } from "@/lib/data";
 import { money } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import { useCatalog } from "@/lib/use-catalog";
@@ -12,7 +10,7 @@ type MerchSearch = {
   kind?: MerchItem["kind"];
 };
 
-export const Route = createFileRoute("/merch")({
+export const Route = createFileRoute("/merch/")({
   validateSearch: (search: Record<string, unknown>): MerchSearch => {
     const kind = search.kind;
     if (kind === "wear" || kind === "iron" || kind === "paper") return { kind };
@@ -33,9 +31,6 @@ function MerchPage() {
     () => (current === "all" ? merch : merch.filter((item) => item.kind === current)),
     [current, merch],
   );
-  const [open, setOpen] = useState(0);
-  const [show, setShow] = useState(false);
-  const [shots, setShots] = useState<GalleryShot[]>([]);
 
   return (
     <main>
@@ -81,19 +76,12 @@ function MerchPage() {
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((item) => (
-            <article key={item.slug} className="wanted flex flex-col overflow-hidden bg-hat">
-              <button
-                type="button"
-                onClick={() => {
-                  setShots([
-                    { src: item.image, alt: item.name },
-                    ...(item.gallery ?? []),
-                  ]);
-                  setOpen(0);
-                  setShow(true);
-                }}
-                className="group block w-full overflow-hidden"
-              >
+            <Link
+              key={item.slug}
+              to="/merch/$slug"
+              params={{ slug: item.slug }}
+              className="wanted flex flex-col overflow-hidden bg-hat press"
+            >
               <div className="relative">
                 <img
                   src={item.image}
@@ -104,30 +92,13 @@ function MerchPage() {
                   <span className="stamp absolute top-3 left-3 bg-bone/80 px-2 py-1 text-fire">Sold out</span>
                 ) : null}
               </div>
-              </button>
               <div className="flex flex-1 flex-col px-5 py-5">
                 <p className="stamp text-sand">{item.kind}</p>
                 <h2 className="display mt-2 text-3xl">{item.name}</h2>
                 <p className="mt-2 text-sm text-cream">{item.line}</p>
-                <p className="mt-3 text-sm text-ash">{item.blurb}</p>
                 <p className="mt-4 text-lg text-cream">{item.soldOut ? "Sold out" : money(item.price)}</p>
-                <div className="mt-5">
-                  {item.soldOut ? null : (
-                  <AddToBag
-                    price={item.price}
-                    options={item.sizes}
-                    line={{
-                      kind: "merch",
-                      slug: item.slug,
-                      name: item.name,
-                      image: item.image,
-                      variant: item.sizes ? undefined : "One size",
-                    }}
-                  />
-                  )}
-                </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
@@ -137,15 +108,6 @@ function MerchPage() {
           Merch ships in the US. Flower in the same order ships to California only. 21+.
         </p>
       </section>
-
-      {show && shots.length ? (
-        <Lightbox
-          shots={shots}
-          index={open}
-          onClose={() => setShow(false)}
-          onIndex={setOpen}
-        />
-      ) : null}
     </main>
   );
 }

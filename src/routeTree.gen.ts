@@ -19,7 +19,6 @@ import { Route as FindRouteImport } from './routes/find'
 import { Route as GroundsRouteImport } from './routes/grounds'
 import { Route as ListRouteImport } from './routes/list'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as MerchRouteImport } from './routes/merch'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RopeBurnRouteImport } from './routes/rope-burn'
 import { Route as TapeRouteImport } from './routes/tape'
@@ -28,6 +27,8 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as AdminDeskRouteImport } from './routes/admin/desk'
 import { Route as CutsIndexRouteImport } from './routes/cuts/index'
 import { Route as CutsSlugRouteImport } from './routes/cuts/$slug'
+import { Route as MerchIndexRouteImport } from './routes/merch/index'
+import { Route as MerchSlugRouteImport } from './routes/merch/$slug'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -80,11 +81,6 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MerchRoute = MerchRouteImport.update({
-  id: '/merch',
-  path: '/merch',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -125,6 +121,16 @@ const CutsSlugRoute = CutsSlugRouteImport.update({
   path: '/cuts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchIndexRoute = MerchIndexRouteImport.update({
+  id: '/merch/',
+  path: '/merch/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchSlugRoute = MerchSlugRouteImport.update({
+  id: '/merch/$slug',
+  path: '/merch/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
@@ -142,15 +148,16 @@ export interface FileRoutesByFullPath {
   '/grounds': typeof GroundsRoute
   '/list': typeof ListRoute
   '/login': typeof LoginRoute
-  '/merch': typeof MerchRoute
   '/privacy': typeof PrivacyRoute
   '/rope-burn': typeof RopeBurnRoute
   '/tape': typeof TapeRoute
   '/terms': typeof TermsRoute
   '/admin/desk': typeof AdminDeskRoute
   '/cuts/$slug': typeof CutsSlugRoute
+  '/merch/$slug': typeof MerchSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/cuts/': typeof CutsIndexRoute
+  '/merch/': typeof MerchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesByTo {
@@ -164,15 +171,16 @@ export interface FileRoutesByTo {
   '/grounds': typeof GroundsRoute
   '/list': typeof ListRoute
   '/login': typeof LoginRoute
-  '/merch': typeof MerchRoute
   '/privacy': typeof PrivacyRoute
   '/rope-burn': typeof RopeBurnRoute
   '/tape': typeof TapeRoute
   '/terms': typeof TermsRoute
   '/admin/desk': typeof AdminDeskRoute
   '/cuts/$slug': typeof CutsSlugRoute
+  '/merch/$slug': typeof MerchSlugRoute
   '/admin': typeof AdminIndexRoute
   '/cuts': typeof CutsIndexRoute
+  '/merch': typeof MerchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRoutesById {
@@ -187,15 +195,16 @@ export interface FileRoutesById {
   '/grounds': typeof GroundsRoute
   '/list': typeof ListRoute
   '/login': typeof LoginRoute
-  '/merch': typeof MerchRoute
   '/privacy': typeof PrivacyRoute
   '/rope-burn': typeof RopeBurnRoute
   '/tape': typeof TapeRoute
   '/terms': typeof TermsRoute
   '/admin/desk': typeof AdminDeskRoute
   '/cuts/$slug': typeof CutsSlugRoute
+  '/merch/$slug': typeof MerchSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/cuts/': typeof CutsIndexRoute
+  '/merch/': typeof MerchIndexRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
 }
 export interface FileRouteTypes {
@@ -211,15 +220,16 @@ export interface FileRouteTypes {
     | '/grounds'
     | '/list'
     | '/login'
-    | '/merch'
     | '/privacy'
     | '/rope-burn'
     | '/tape'
     | '/terms'
     | '/admin/desk'
     | '/cuts/$slug'
+    | '/merch/$slug'
     | '/admin/'
     | '/cuts/'
+    | '/merch/'
     | '/api/auth/$'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -233,15 +243,16 @@ export interface FileRouteTypes {
     | '/grounds'
     | '/list'
     | '/login'
-    | '/merch'
     | '/privacy'
     | '/rope-burn'
     | '/tape'
     | '/terms'
     | '/admin/desk'
     | '/cuts/$slug'
+    | '/merch/$slug'
     | '/admin'
     | '/cuts'
+    | '/merch'
     | '/api/auth/$'
   id:
     | '__root__'
@@ -255,15 +266,16 @@ export interface FileRouteTypes {
     | '/grounds'
     | '/list'
     | '/login'
-    | '/merch'
     | '/privacy'
     | '/rope-burn'
     | '/tape'
     | '/terms'
     | '/admin/desk'
     | '/cuts/$slug'
+    | '/merch/$slug'
     | '/admin/'
     | '/cuts/'
+    | '/merch/'
     | '/api/auth/$'
   fileRoutesById: FileRoutesById
 }
@@ -278,15 +290,16 @@ export interface RootRouteChildren {
   GroundsRoute: typeof GroundsRoute
   ListRoute: typeof ListRoute
   LoginRoute: typeof LoginRoute
-  MerchRoute: typeof MerchRoute
   PrivacyRoute: typeof PrivacyRoute
   RopeBurnRoute: typeof RopeBurnRoute
   TapeRoute: typeof TapeRoute
   TermsRoute: typeof TermsRoute
   AdminDeskRoute: typeof AdminDeskRoute
   CutsSlugRoute: typeof CutsSlugRoute
+  MerchSlugRoute: typeof MerchSlugRoute
   AdminIndexRoute: typeof AdminIndexRoute
   CutsIndexRoute: typeof CutsIndexRoute
+  MerchIndexRoute: typeof MerchIndexRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
@@ -362,13 +375,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/merch': {
-      id: '/merch'
-      path: '/merch'
-      fullPath: '/merch'
-      preLoaderRoute: typeof MerchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -425,6 +431,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CutsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merch/': {
+      id: '/merch/'
+      path: '/merch'
+      fullPath: '/merch/'
+      preLoaderRoute: typeof MerchIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merch/$slug': {
+      id: '/merch/$slug'
+      path: '/merch/$slug'
+      fullPath: '/merch/$slug'
+      preLoaderRoute: typeof MerchSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
@@ -446,15 +466,16 @@ const rootRouteChildren: RootRouteChildren = {
   GroundsRoute: GroundsRoute,
   ListRoute: ListRoute,
   LoginRoute: LoginRoute,
-  MerchRoute: MerchRoute,
   PrivacyRoute: PrivacyRoute,
   RopeBurnRoute: RopeBurnRoute,
   TapeRoute: TapeRoute,
   TermsRoute: TermsRoute,
   AdminDeskRoute: AdminDeskRoute,
   CutsSlugRoute: CutsSlugRoute,
+  MerchSlugRoute: MerchSlugRoute,
   AdminIndexRoute: AdminIndexRoute,
   CutsIndexRoute: CutsIndexRoute,
+  MerchIndexRoute: MerchIndexRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

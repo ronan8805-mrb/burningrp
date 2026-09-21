@@ -406,9 +406,9 @@ export const merch: MerchItem[] = [
     line: "Strain Tee",
     blurb:
       "An olive-drab boxy tee showcasing vibrant, Acid-Western comic art on the front. It features a mustache-wearing cowboy skeleton smoking a joint and holding a key lime smoothie against a desert mesa backdrop with \"KEYLIME Z\" typography.",
-    image: "/images/merch-keylimez-tee.jpg",
+    image: "/images/merch-keylimez-tee-front.jpg",
     gallery: [
-      { src: "/images/merch-keylimez-tee-front.jpg", alt: "KEYLIME Z tee — front" },
+      { src: "/images/merch-keylimez-tee.jpg", alt: "KEYLIME Z tee — front and back" },
       { src: "/images/merch-keylimez-tee-label.jpg", alt: "KEYLIME Z tee — house label" },
     ],
     price: 4800,
@@ -421,9 +421,9 @@ export const merch: MerchItem[] = [
     line: "Heavy Artillery Tee",
     blurb:
       "A dark acid-washed black tee with a dramatic full-front graphic. It displays a cowboy skeleton slinging a massive rocket launcher over its shoulder set against a trippy desert sky with flaming \"Z\" orbs and \"ZAZOOKA\" header text.",
-    image: "/images/merch-zazooka-tee.jpg",
+    image: "/images/merch-zazooka-tee-front.jpg",
     gallery: [
-      { src: "/images/merch-zazooka-tee-front.jpg", alt: "ZAZOOKA tee — front" },
+      { src: "/images/merch-zazooka-tee.jpg", alt: "ZAZOOKA tee — front and back" },
     ],
     price: 4800,
     sizes: TEE_SIZES,
@@ -608,6 +608,11 @@ export function getCut(slug: string): Cut | undefined {
 
 export function getMerch(slug: string): MerchItem | undefined {
   return merch.find((item) => item.slug === slug);
+}
+
+export function merchShots(item: MerchItem): GalleryShot[] {
+  const extra = item.gallery ?? [];
+  return [{ src: item.image, alt: item.name }, ...extra.filter((shot) => shot.src !== item.image)];
 }
 
 export function relatedCuts(slug: string): Cut[] {

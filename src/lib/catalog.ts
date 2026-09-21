@@ -50,6 +50,10 @@ export function findCut(overlay: CatalogOverlay, slug: string, member: boolean):
   return visibleCuts(overlay, member).find((cut) => cut.slug === slug);
 }
 
+export function findMerch(overlay: CatalogOverlay, slug: string, member: boolean): MerchItem | undefined {
+  return visibleMerch(overlay, member).find((item) => item.slug === slug);
+}
+
 export const PRODUCT_IMAGES = [
   "/images/zestperado-jar.jpg",
   "/images/zfuel-jar.jpg",
@@ -58,8 +62,8 @@ export const PRODUCT_IMAGES = [
   "/images/zuma-jar.jpg",
   "/images/zazooka-jar.jpg",
   "/images/merch-banknote.jpg",
-  "/images/merch-keylimez-tee.jpg",
-  "/images/merch-zazooka-tee.jpg",
+  "/images/merch-keylimez-tee-front.jpg",
+  "/images/merch-zazooka-tee-front.jpg",
   "/images/merch-core-hat.jpg",
   "/images/merch-grinder.jpg",
   "/images/merch-ashtray.jpg",

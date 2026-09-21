@@ -105,7 +105,8 @@ function Home() {
           {merch.slice(0, 2).map((item) => (
             <Link
               key={item.slug}
-              to="/merch"
+              to="/merch/$slug"
+              params={{ slug: item.slug }}
               className="group wanted overflow-hidden bg-hat press"
             >
               <img

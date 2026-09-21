@@ -71,8 +71,8 @@ export function CartDrawer() {
               {lines.map((line) => (
                 <li key={line.id} className="grid grid-cols-[5rem_1fr] gap-4 px-5 py-4">
                   <Link
-                    to={line.kind === "cut" ? "/cuts/$slug" : "/merch"}
-                    params={line.kind === "cut" ? { slug: line.slug } : undefined}
+                    to={line.kind === "cut" ? "/cuts/$slug" : "/merch/$slug"}
+                    params={{ slug: line.slug }}
                     onClick={() => setOpen(false)}
                   >
                     <img src={line.image} alt="" className="aspect-square w-full object-cover" />
