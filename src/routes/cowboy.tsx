@@ -13,7 +13,7 @@ const timeline = [
   { year: "Dirt", title: "Tents and a barn garage", body: "OG runs in the Valley. Friends opened the bag and said it smelled like a rope on fire. We kept the name." },
   { year: "Rooms", title: "Indoor. Hand watered.", body: "Small rooms. Cold cure. No PGR. Single source." },
   { year: "Brand", title: "The name stuck", body: "Burning Rope Pharms. Cowboy Grown. If it don't slap, it stays home." },
-  { year: "Rodeo", title: "Rope Burn", body: "A two-day festival at the Burning Grounds. Date TBA." },
+  { year: "Rodeo", title: "Rope Burn", body: "A two-day 21+ expo at the Burning Grounds. October 26–27. Spoken: the Rodeo." },
 ];
 
 function CowboyPage() {

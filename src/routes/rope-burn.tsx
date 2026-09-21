@@ -13,33 +13,29 @@ export const Route = createFileRoute("/rope-burn")({
 function RopeBurnPage() {
   return (
     <main>
-      <section className="relative min-h-[28rem] overflow-hidden md:h-[70svh]">
+      <section className="overflow-hidden bg-bone">
         <img
-          src="/images/festival-stage.jpg"
-          alt="Iron Stage at night, fire columns, cowboy hats in the dust"
-          className="absolute inset-0 h-full w-full object-cover"
+          src="/images/rope-burn-poster.jpg"
+          alt="ROPE BURN, October 26–27, the Rodeo at the Burning Grounds"
+          className="mx-auto w-full max-w-[1440px] object-contain"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-bone via-bone/50 to-bone/20" />
-        <div className="page-pad relative z-10 mx-auto flex h-full min-h-[28rem] max-w-[1440px] flex-col justify-end pb-12 md:pb-16">
-          <p className="stamp text-sand">Burning Rope Pharms presents</p>
-          <h1 className="display mt-3 text-mark">ROPE BURN</h1>
-          <p className="ui mt-2 text-sm text-cream">at the Burning Grounds · spoken: the Rodeo</p>
-          <p className="mt-4 max-w-xl text-ash">{festival.when}</p>
-        </div>
       </section>
 
       <section className="page-pad mx-auto max-w-[1440px] grid gap-10 py-16 lg:grid-cols-2 lg:items-end">
         <div>
-          <p className="stamp text-fire">The festival</p>
-          <h2 className="display mt-3 text-section">{festival.creed}</h2>
+          <p className="stamp text-fire">Burning Rope Pharms presents</p>
+          <h1 className="display mt-3 text-mark">ROPE BURN</h1>
+          <p className="ui mt-2 text-sm text-cream">at the Burning Grounds · spoken: the Rodeo</p>
+          <p className="mt-4 max-w-xl text-ash">{festival.when}</p>
+          <h2 className="display mt-8 text-section">{festival.creed}</h2>
           <p className="mt-5 max-w-xl text-ash">{festival.where}</p>
           <p className="mt-5 max-w-xl text-ash">
-            Printed title: Rope Burn. Place: the Burning Grounds. Spoken: the Rodeo. Two days. Date TBA — the list hears first.
+            Ticketed. Controlled and premium — not a nightclub, not a conference. Lineup unpublished until confirmed.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
           <BrandLink to="/list" variant="fire">
-            Get the date
+            Join the list
           </BrandLink>
           <a
             href="#vendor"
@@ -63,23 +59,37 @@ function RopeBurnPage() {
         </div>
       </section>
 
+      <section className="page-pad mx-auto max-w-[1440px] py-12">
+        <p className="stamp text-sand">On the Grounds</p>
+        <h2 className="display mt-3 text-section">Site map</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          {festival.zones.map((zone) => (
+            <article key={zone.name} className="border border-iron bg-hat px-5 py-6">
+              <h3 className="display text-2xl">{zone.name}</h3>
+              <p className="mt-3 text-sm text-ash">{zone.line}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="page-pad mx-auto max-w-[1440px] grid gap-8 py-12 lg:grid-cols-2 lg:items-center">
-        <img
-          src="/images/festival-expo.jpg"
-          alt="Expo tables at the Burning Grounds"
-          className="aspect-16/9 w-full object-cover hairline"
-        />
         <div>
-          <p className="stamp text-sand">On the dirt</p>
+          <p className="stamp text-sand">Who it is for</p>
           <p className="mt-4 text-ash">
-            Growers, hash, paper, and iron under a barn roof. Stages after dark. Merch in the barn. 21+ throughout.
+            Licensed and invited brands, cultivators and hash makers, retail buyers and media, and a ticketed 21+ public on a controlled cap.
           </p>
           <p className="mt-4 text-ash">
-            Tickets are not on sale yet. When the weekend exists, it goes to the list, then here.
+            Tickets are not on sale yet. When they drop, they go to the list, then here.
           </p>
           <BrandLink to="/merch" variant="ghost" className="mt-8">
             Shop merch
           </BrandLink>
+        </div>
+        <div className="border border-iron bg-hat px-5 py-6">
+          <p className="stamp text-fire">The lockup</p>
+          <p className="mt-4 text-cream">Burning Rope Pharms presents ROPE BURN</p>
+          <p className="mt-2 text-ash">at the Burning Grounds. Spoken: the Rodeo.</p>
+          <p className="mt-4 text-sm text-ash">In Rope We Trust · Cowboy Grown · 21+</p>
         </div>
       </section>
 
@@ -131,7 +141,7 @@ function VendorForm() {
       <div className="border border-iron bg-hat p-6 md:p-8">
         <p className="stamp text-fire">Received</p>
         <h3 className="display mt-2 text-3xl">We have your letter.</h3>
-        <p className="mt-4 text-ash">If there is a table, we write back. Date still TBA.</p>
+        <p className="mt-4 text-ash">If there is a table, we write back. October 26–27.</p>
       </div>
     );
   }

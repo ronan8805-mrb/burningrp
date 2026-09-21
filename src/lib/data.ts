@@ -507,22 +507,29 @@ export const festival = {
   title: "Rope Burn",
   spoken: "the Rodeo",
   place: "the Burning Grounds",
-  where: "San Fernando Valley. Canyon edge.",
-  when: "Date TBA · two days · 21+",
-  creed: "A two-day flower festival and expo. Booths, stages, and a Sunday close at the Burning Grounds.",
+  where: "The Burning Grounds. Daytime in, nighttime out. No camping.",
+  when: "October 26–27 · two days · 21+",
+  creed: "A two-day, 21+ cannabis expo. Cowboy Grown. Limited. Physical. Serious about flower. Trade-and-culture floor first.",
   days: [
     {
-      id: "rodeo",
-      name: "Saturday — The Rodeo",
-      hours: "11:00 – 02:00",
-      line: "Gates and 21+ check. Expo floor, grower village, cut judging, merch barn. Iron Stage after dark.",
+      id: "one",
+      name: "October 26 — Day one",
+      hours: "Doors to evening",
+      line: "Vendor Row, buyer hours, Main Stage. Evening at the Saloon and the Arena.",
     },
     {
-      id: "burn",
-      name: "Sunday — The Burn",
-      hours: "12:00 – 22:00",
-      line: "Last look at the floor. Cowboy Grown talk. The gate closes the weekend.",
+      id: "two",
+      name: "October 27 — Day two",
+      hours: "Expo to close-out",
+      line: "Floor, featured activations, close-out, load-out. Guests leave the Grounds at close.",
     },
+  ],
+  zones: [
+    { name: "Vendor Row", line: "Brand booths, product display, meetings" },
+    { name: "Main Stage", line: "Talks, drop announcements, live program" },
+    { name: "The Arena", line: "Demos, competitions, featured activations" },
+    { name: "Saloon", line: "Hospitality, seated meetings, evening hold" },
+    { name: "First Aid", line: "Required operations" },
   ],
 } as const;
 
@@ -546,7 +553,7 @@ export const tapeLegend = [
 
 export const ironGets = [
   "The next cut, named, before it hits the shop.",
-  "Rope Burn date, when it exists.",
+  "Rope Burn, October 26–27. The list hears first.",
   "Room openings on the locator.",
 ];
 

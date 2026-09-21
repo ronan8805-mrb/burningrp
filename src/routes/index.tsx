@@ -71,26 +71,25 @@ function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden">
+      <section className="overflow-hidden bg-bone">
         <img
-          src="/images/festival-stage.jpg"
-          alt="Night rodeo at the Burning Grounds"
-          className="absolute inset-0 h-full w-full object-cover"
+          src="/images/rope-burn-poster.jpg"
+          alt="ROPE BURN, October 26–27, the Rodeo at the Burning Grounds"
+          className="mx-auto w-full max-w-[1440px] object-contain"
         />
-        <div className="absolute inset-0 bg-bone/70" />
-        <div className="page-pad relative z-10 mx-auto max-w-[1440px] py-24">
+        <div className="page-pad mx-auto max-w-[1440px] py-12">
           <p className="stamp text-sand">Burning Rope Pharms presents</p>
           <h2 className="display mt-4 text-display">ROPE BURN</h2>
-          <p className="ui mt-3 text-sm text-cream">the Rodeo · two days · the Burning Grounds</p>
+          <p className="ui mt-3 text-sm text-cream">the Rodeo · October 26–27 · the Burning Grounds</p>
           <p className="mt-6 max-w-lg text-ash">
-            Two-day flower festival and expo. Date TBA. The list hears first.
+            Two-day 21+ expo. Daytime in, nighttime out. No camping. Ticketed when the list opens.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <BrandLink to="/rope-burn" variant="fire">
               The Rodeo
             </BrandLink>
             <BrandLink to="/list" variant="ghost">
-              Get the date
+              Join the list
             </BrandLink>
           </div>
         </div>
