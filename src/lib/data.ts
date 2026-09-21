@@ -53,6 +53,7 @@ export type MerchItem = {
   line: string;
   blurb: string;
   image: string;
+  gallery?: GalleryShot[];
   price: number;
   soldOut?: boolean;
   sizes?: string[];
@@ -67,7 +68,6 @@ export const MERCH_FILTERS: { id: "all" | MerchItem["kind"]; label: string }[] =
   { id: "all", label: "All" },
   { id: "wear", label: "Wear" },
   { id: "iron", label: "Iron" },
-  { id: "paper", label: "Paper" },
 ];
 
 export const TEE_SIZES = ["S", "M", "L", "XL", "XXL"];
@@ -385,87 +385,121 @@ export const rooms: Room[] = [
 
 export const merch: MerchItem[] = [
   {
-    slug: "studded-hat",
-    name: "Studded Hat",
+    slug: "banknote-outlaw",
+    name: "The Banknote Outlaw",
     kind: "wear",
-    line: "Black felt. Marked brim.",
-    blurb: "The house hat. Black felt, studded band, Rope mark in the crown. One size, shaped to wear.",
-    image: "/images/merch-hat.jpg",
-    price: 8500,
+    line: "Engraved Treasury Tee",
+    blurb:
+      "A vintage mineral-washed green/slate t-shirt styled like an 1800s Wild West banknote. It features an outlaw skeleton crest and \"100\" denomination mark on the front chest, with a full-back steel-engraved illustration of a smoking cowboy skeleton holding a lasso.",
+    image: "/images/merch-banknote.jpg",
+    gallery: [
+      { src: "/images/merch-banknote-front.jpg", alt: "The Banknote Outlaw — front" },
+      { src: "/images/merch-banknote-back.jpg", alt: "The Banknote Outlaw — back" },
+    ],
+    price: 5800,
+    sizes: TEE_SIZES,
   },
   {
-    slug: "rope-tee",
-    name: "Rope Tee",
+    slug: "keylimez-tee",
+    name: "KEYLIME Z",
     kind: "wear",
-    line: "Cream field. Coil print.",
-    blurb: "Heavyweight cream tee. Burnt rope on the chest. Nothing on the back.",
-    image: "/images/merch-tee.jpg",
+    line: "Strain Tee",
+    blurb:
+      "An olive-drab boxy tee showcasing vibrant, Acid-Western comic art on the front. It features a mustache-wearing cowboy skeleton smoking a joint and holding a key lime smoothie against a desert mesa backdrop with \"KEYLIME Z\" typography.",
+    image: "/images/merch-keylimez-tee.jpg",
+    gallery: [
+      { src: "/images/merch-keylimez-tee-front.jpg", alt: "KEYLIME Z tee — front" },
+      { src: "/images/merch-keylimez-tee-label.jpg", alt: "KEYLIME Z tee — house label" },
+    ],
     price: 4800,
     sizes: TEE_SIZES,
   },
   {
-    slug: "burn-bandana",
-    name: "Burn Bandana",
+    slug: "zazooka-tee",
+    name: "ZAZOOKA",
     kind: "wear",
-    line: "Rust cotton. Iron knot.",
-    blurb: "Cotton bandana in rust. House mark in the corner. Neck, hat, or pocket.",
-    image: "/images/merch-bandana.jpg",
-    price: 2800,
+    line: "Heavy Artillery Tee",
+    blurb:
+      "A dark acid-washed black tee with a dramatic full-front graphic. It displays a cowboy skeleton slinging a massive rocket launcher over its shoulder set against a trippy desert sky with flaming \"Z\" orbs and \"ZAZOOKA\" header text.",
+    image: "/images/merch-zazooka-tee.jpg",
+    gallery: [
+      { src: "/images/merch-zazooka-tee-front.jpg", alt: "ZAZOOKA tee — front" },
+    ],
+    price: 4800,
+    sizes: TEE_SIZES,
   },
   {
-    slug: "rope-boot",
-    name: "Rope Boot",
+    slug: "core-outlaw",
+    name: "The Core Outlaw",
     kind: "wear",
-    line: "Black leather. One coil.",
-    blurb: "Black studded shaft, rust rope wrap. Leather that takes dirt. Sold as a pair.",
-    image: "/images/merch-boot.jpg",
-    price: 26000,
-    sizes: BOOT_SIZES,
+    line: "Black beaver felt cowboy hat",
+    blurb:
+      "A premium deep-black beaver felt cowboy hat featuring a sleek teardrop crown, a slim brown leather hatband with a custom brass skeleton emblem, and a luxury black silk interior lining printed with the full brand logo.",
+    image: "/images/merch-core-hat.jpg",
+    price: 28500,
   },
   {
-    slug: "skull-patch",
-    name: "Skull Patch",
-    kind: "wear",
-    line: "Ivory thread. Hat on.",
-    blurb: "Embroidered ivory skull in a black hat. Iron-on or stitch. Jacket work.",
-    image: "/images/merch-patch.jpg",
-    price: 1800,
-  },
-  {
-    slug: "cooling-iron",
-    name: "Cooling Iron",
+    slug: "desperado-grinder",
+    name: "The Desperado Six-Shooter",
     kind: "iron",
-    line: "The house stamp.",
-    blurb: "Cast iron Rope brand. Heavy. Display, or heat once. Not a toy.",
-    image: "/images/merch-iron.jpg",
-    price: 14000,
+    line: "Cylinder grinder",
+    blurb:
+      "A heavy-duty, 63mm 4-piece gunmetal aluminum grinder featuring a top lid sculpted like a 6-chamber revolver cylinder with inlaid brass cartridge heads, a \"COWBOY GROWN\" center skull badge, curved diamond teeth, and a custom cactus pollen scraper.",
+    image: "/images/merch-grinder.jpg",
+    price: 8500,
   },
   {
-    slug: "jar-crate",
-    name: "Jar Crate",
+    slug: "outlaws-grip",
+    name: "The Outlaw's Grip",
     kind: "iron",
-    line: "Burn-marked wood.",
-    blurb: "Pine crate, rope handles, brand on the lid. Holds wraps and jars.",
-    image: "/images/merch-crate.jpg",
-    price: 7200,
+    line: "Skeletal hand ashtray",
+    blurb:
+      "A heavy ceramic ash bowl wrapped in a bone-white 3D-sculpted skeletal hand holding a smoldering ceramic cigar snuffer, detailed with rope filigree along the rim and stamped \"COWBOY GROWN\" on the base.",
+    image: "/images/merch-ashtray.jpg",
+    price: 9500,
   },
   {
-    slug: "wanted-sheet",
-    name: "Wanted Sheet",
-    kind: "paper",
-    line: "Letterpress on stock.",
-    blurb: "The county poster, printed on heavy stock. Nailed, not framed.",
-    image: "/images/wanted-still.jpg",
-    price: 2200,
+    slug: "desperado-holster",
+    name: "The Desperado Holster",
+    kind: "iron",
+    line: "Tool-leather case",
+    blurb:
+      "A full-grain vegetable-tanned saddle leather holster with brass rivets, built-in slots for two joint tubes, a Zippo-style lighter, and a poker, complete with an embossed skeleton outlaw seal and a steel belt clip.",
+    image: "/images/merch-holster.jpg",
+    price: 14500,
   },
   {
-    slug: "burn-matches",
-    name: "Burn Matches",
-    kind: "paper",
-    line: "Black box. Wooden sticks.",
-    blurb: "House matchbox. Skull mark. Sticks that light.",
-    image: "/images/merch-matches.jpg",
-    price: 1400,
+    slug: "acid-dune-tray",
+    name: "Acid Dune",
+    kind: "iron",
+    line: "Live-edge wood & epoxy rolling tray",
+    blurb:
+      "A handcrafted live-edge walnut rolling tray with poured neon-lime and desert-orange epoxy channels, precision CNC-milled utility cutouts for your grinder and accessories, and \"IN ROPE WE TRUST\" laser-etched on the wood.",
+    image: "/images/merch-tray.jpg",
+    price: 22000,
+  },
+  {
+    slug: "outlaw-arsenal",
+    name: "Outlaw Arsenal",
+    kind: "wear",
+    line: "4-piece pin collection",
+    blurb:
+      "A set of four enamel lapel pins—including the Zazooka rocket launcher, a gold-plated skeleton outlaw head, a UV-reactive neon saguaro cactus, and a shiny logo pin—mounted on a Wild West ammo box kraft backer card.",
+    image: "/images/merch-pins.jpg",
+    price: 4200,
+  },
+  {
+    slug: "outlaw-zippo",
+    name: "Outlaw Zippo",
+    kind: "iron",
+    line: "Antique brass",
+    blurb:
+      "A solid brass flip-top lighter with a heavy hand-antiqued patina, deep 3D-engraved skeleton cowboy on the front, desert canyon horizon on the back, side flame filigree, and a serial-numbered bottom hallmark.",
+    image: "/images/merch-zippo.jpg",
+    gallery: [
+      { src: "/images/merch-zippo-lit.jpg", alt: "Outlaw Zippo — open flame" },
+    ],
+    price: 7500,
   },
 ];
 

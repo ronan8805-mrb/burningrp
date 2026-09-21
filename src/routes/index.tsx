@@ -100,7 +100,7 @@ function Home() {
         <div className="mb-8">
           <p className="stamp text-sand">The barn</p>
           <h2 className="display mt-2 text-section">Merch</h2>
-          <p className="mt-3 max-w-md text-ash">Hats, iron, paper. Two from the barn.</p>
+          <p className="mt-3 max-w-md text-ash">Tees, the hat, iron. Two from the barn.</p>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {merch.slice(0, 2).map((item) => (
@@ -112,7 +112,7 @@ function Home() {
               <img
                 src={item.image}
                 alt={item.name}
-                className="aspect-3/4 w-full object-cover transition-transform duration-(--motion-slow) group-hover:scale-[1.03]"
+                className="aspect-square w-full object-contain bg-bone"
               />
               <div className="px-5 py-5">
                 <h3 className="display text-2xl">{item.name}</h3>

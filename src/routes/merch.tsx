@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { MERCH_FILTERS, type MerchItem } from "@/lib/data";
+import { MERCH_FILTERS, type GalleryShot, type MerchItem } from "@/lib/data";
 import { AddToBag } from "@/components/add-to-bag";
 import { Lightbox } from "@/components/lightbox";
 import { money } from "@/lib/utils";
@@ -35,6 +35,7 @@ function MerchPage() {
   );
   const [open, setOpen] = useState(0);
   const [show, setShow] = useState(false);
+  const [shots, setShots] = useState<GalleryShot[]>([]);
 
   return (
     <main>
@@ -49,7 +50,7 @@ function MerchPage() {
           <p className="stamp text-sand">The barn</p>
           <h1 className="display mt-3 text-display">Merch</h1>
           <p className="mt-4 max-w-xl text-lg text-cream">
-            Hats, iron, paper, a boot. Ships from the shop. Wear it like the brand — not a costume.
+            Tees, the hat, iron, and barn gear. Ships from the shop. Wear it like the brand — not a costume.
           </p>
         </div>
       </section>
@@ -79,12 +80,16 @@ function MerchPage() {
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {list.map((item, i) => (
+          {list.map((item) => (
             <article key={item.slug} className="wanted flex flex-col overflow-hidden bg-hat">
               <button
                 type="button"
                 onClick={() => {
-                  setOpen(i);
+                  setShots([
+                    { src: item.image, alt: item.name },
+                    ...(item.gallery ?? []),
+                  ]);
+                  setOpen(0);
                   setShow(true);
                 }}
                 className="group block w-full overflow-hidden"
@@ -93,7 +98,7 @@ function MerchPage() {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="aspect-3/4 w-full object-cover transition-transform duration-(--motion-slow) group-hover:scale-[1.03]"
+                  className="aspect-square w-full object-contain bg-bone"
                 />
                 {item.soldOut ? (
                   <span className="stamp absolute top-3 left-3 bg-bone/80 px-2 py-1 text-fire">Sold out</span>
@@ -133,9 +138,9 @@ function MerchPage() {
         </p>
       </section>
 
-      {show ? (
+      {show && shots.length ? (
         <Lightbox
-          shots={list.map((item) => ({ src: item.image, alt: item.name }))}
+          shots={shots}
           index={open}
           onClose={() => setShow(false)}
           onIndex={setOpen}
