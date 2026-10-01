@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bone: #0b0a09;
-  --color-hat: #161410;
-  --color-cream: #f3e8d4;
-  --color-sand: #c4a574;
-  --color-fire: #e35a1b;
-  --color-rust: #8c3b16;
-  --color-ash: #8a847a;
-  --color-iron: #3a342c;
+  --color-bone: rgb(18 8 4 / 0.84);
+  --color-hat: rgb(28 14 9 / 0.9);
+  --color-cream: #f6ead6;
+  --color-sand: #e4b56a;
+  --color-fire: #ff6a1a;
+  --color-rust: #9a3412;
+  --color-ash: #b5a089;
+  --color-iron: #5a3220;
   --color-blood: #6e1c14;
   --color-paper: #e8d4b0;
   --color-ink: #1c140c;
@@ -46,7 +46,7 @@
 
 @layer base {
   html {
-    background: var(--color-bone);
+    background: #070403;
     color: var(--color-cream);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -58,8 +58,14 @@
     font-family: var(--font-sans);
     font-size: var(--text-body);
     line-height: var(--leading-body);
-    background: var(--color-bone);
     color: var(--color-cream);
+    background-color: #070403;
+    background-image:
+      linear-gradient(to bottom, rgb(7 4 3 / 0.55), rgb(7 4 3 / 0.72) 30%, rgb(7 4 3 / 0.8)),
+      url("/images/universe/grounds.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center 42%;
   }
 
   button:not(:disabled),

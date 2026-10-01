@@ -3,7 +3,6 @@ import { BrandLink } from "@/components/brand-button";
 import { CityField } from "@/components/city-field";
 import { CutCard } from "@/components/cut-card";
 import { EmailIron } from "@/components/email-iron";
-import { HeroBackdrop } from "@/components/hero-backdrop";
 import { DoctrineMarquee } from "@/components/marquee";
 import { money } from "@/lib/utils";
 import { useCatalog } from "@/lib/use-catalog";
@@ -22,8 +21,12 @@ function Home() {
   return (
     <main>
       <section className="relative h-svh min-h-[36rem] overflow-hidden">
-        <HeroBackdrop />
-        <div className="absolute inset-0 bg-linear-to-t from-bone via-bone/40 to-bone/15" />
+        <img
+          src="/images/universe/grounds.jpg"
+          alt="Skeleton cowboy wagon under a burning desert sky"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-black via-black/35 to-black/25" />
         <div className="page-pad relative z-10 flex h-full max-w-[1440px] mx-auto flex-col justify-end pb-16">
           <p className="stamp text-sand">SFV · Indoor · 21+</p>
           <h1 className="display mt-3 text-mark text-cream">IN ROPE WE TRUST</h1>
@@ -55,19 +58,14 @@ function Home() {
 
       <section className="page-pad mx-auto max-w-[1440px] pb-20">
         <div className="mb-8">
-          <p className="stamp text-sand">Shop</p>
+          <p className="stamp text-sand">The jars</p>
           <h2 className="display mt-2 text-section">The Cuts</h2>
-          <p className="mt-3 max-w-md text-ash">ZESTPERADO and Z FUEL. The rest are on The Cuts.</p>
+          <p className="mt-3 max-w-md text-ash">Same wagon. Different sky.</p>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {cuts.slice(0, 2).map((cut) => (
+          {cuts.map((cut) => (
             <CutCard key={cut.slug} cut={cut} />
           ))}
-        </div>
-        <div className="mt-8">
-          <BrandLink to="/cuts" variant="ghost">
-            See more
-          </BrandLink>
         </div>
       </section>
 

@@ -44,7 +44,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="relative z-50 border-b border-iron bg-bone">
+      <div className="relative z-50 border-b border-fire/30 bg-bone/75 backdrop-blur-md">
         <div className="page-pad mx-auto flex h-(--header-h) max-w-[1440px] items-center justify-between gap-4">
           <Logo />
 

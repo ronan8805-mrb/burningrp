@@ -21,7 +21,7 @@ export const Route = createRootRoute({
         name: "description",
         content: "Cowboy Grown. If it don't slap, it ain't Rope. 21+ flower and merch from SFV.",
       },
-      { name: "theme-color", content: "#0B0A09" },
+      { name: "theme-color", content: "#120804" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/images/logo.png" },

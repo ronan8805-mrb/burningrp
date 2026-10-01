@@ -15,7 +15,7 @@ export function CutCard({ cut, className }: { cut: Cut; className?: string }) {
         className,
       )}
     >
-      <div className="relative aspect-3/4 overflow-hidden bg-iron">
+      <div className="relative aspect-video overflow-hidden bg-iron">
         <img
           src={cut.card}
           alt=""
