@@ -6,8 +6,7 @@ import { Lightbox } from "@/components/lightbox";
 import { findMerch, visibleMerch } from "@/lib/catalog";
 import { merchShots } from "@/lib/data";
 import { getCatalogOverlay } from "@/lib/shop";
-import { money } from "@/lib/utils";
-import { cn } from "@/lib/utils";
+import { money, cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/merch/$slug")({
   loader: async ({ params }) => {
@@ -24,6 +23,19 @@ export const Route = createFileRoute("/merch/$slug")({
   }),
   component: MerchItemPage,
 });
+
+const MARKS: Record<string, string[]> = {
+  "banknote-outlaw": ["In Rope We Trust banner", "The outlaw, engraved", "Serial down the edge"],
+  "keylimez-tee": ["Keylime Z lettering", "The wide brim", "A dripping key lime"],
+  "zazooka-tee": ["Zazooka · Z × Zooks", "Olive-drab rocket launcher", "Glowing cacti"],
+  "core-outlaw": ["Teardrop crown", "Brass skeleton on leather", "Lockup on black silk"],
+  "desperado-grinder": ["Six-chamber lid", "Brass cartridge heads", "Cactus scraper"],
+  "outlaws-grip": ["Bone-white hand", "Ceramic cigar snuffer", "Rope on the lip"],
+  "desperado-holster": ["Two tubes", "Lighter and poker", "Steel belt clip"],
+  "acid-dune-tray": ["Live-edge walnut", "Neon dune pour", "In Rope We Trust"],
+  "outlaw-arsenal": ["Rocket", "Skull in a Stetson", "Saguaro that glows"],
+  "outlaw-zippo": ["Skeleton in a burning lasso", "Canyon on the back", "Serial in the base"],
+};
 
 function MerchItemPage() {
   const { item, related } = Route.useLoaderData();
@@ -77,6 +89,13 @@ function MerchItemPage() {
             <h1 className="display mt-2 text-display">{item.name}</h1>
             <p className="ui mt-3 text-sm text-cream">{item.line}</p>
             <p className="mt-5 max-w-xl text-ash">{item.blurb}</p>
+            {MARKS[item.slug] ? (
+              <ul className="mt-5 space-y-1 text-sm text-cream">
+                {MARKS[item.slug].map((mark) => (
+                  <li key={mark}>{mark}</li>
+                ))}
+              </ul>
+            ) : null}
             <p className="mt-6 text-xl text-cream">{item.soldOut ? "Sold out" : money(item.price)}</p>
             {item.soldOut ? null : (
               <div className="mt-6 max-w-md">

@@ -37,7 +37,7 @@ function CutsPage() {
         <p className="stamp text-sand">Shop</p>
         <h1 className="display mt-3 text-display">The Cuts</h1>
         <p className="mt-4 max-w-2xl text-ash">
-          The jars: ZESTPERADO, Z FUEL, ZOG, KEYLIMEZ, ZUMA, ZAZOOKA. Cowboy Grown. Indoor. Single source.
+          The jars: ZESTPERADO, Z FUEL, ZOG, KEYLIMEZ, ZUMA, ZAZOOKA. Six in the wheel. Cowboy Grown.
         </p>
         <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Format">
           {FORMAT_FILTERS.map((filter) => {
