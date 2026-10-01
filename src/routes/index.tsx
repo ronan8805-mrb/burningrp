@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BrandLink } from "@/components/brand-button";
 import { CityField } from "@/components/city-field";
-import { TheRide } from "@/components/the-ride";
+import { CutCard } from "@/components/cut-card";
 import { EmailIron } from "@/components/email-iron";
 import { HeroBackdrop } from "@/components/hero-backdrop";
 import { DoctrineMarquee } from "@/components/marquee";
@@ -11,14 +11,7 @@ import { useCurrentUserState } from "@/lib/auth/use-current-user";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Burning Rope Pharms — Rope untethered" },
-      {
-        name: "description",
-        content:
-          "Rope untethered. Cowboy grown flower and merch from the SFV rooms. 21+. In Rope We Trust.",
-      },
-    ],
+    meta: [{ title: "Burning Rope Pharms — In Rope We Trust" }],
   }),
   component: Home,
 });
@@ -34,7 +27,6 @@ function Home() {
         <div className="page-pad relative z-10 flex h-full max-w-[1440px] mx-auto flex-col justify-end pb-16">
           <p className="stamp text-sand">SFV · Indoor · 21+</p>
           <h1 className="display mt-3 text-mark text-cream">IN ROPE WE TRUST</h1>
-          <p className="ui mt-3 text-sm text-sand">Rope untethered.</p>
           <p className="mt-4 max-w-lg text-white">
             Cowboy grown. If it don't slap, it ain't Rope. Flower and merch from the rooms.
           </p>
@@ -54,14 +46,30 @@ function Home() {
       <section className="page-pad mx-auto max-w-[1440px] py-20">
         <p className="stamp text-fire">The creed</p>
         <p className="mt-5 max-w-2xl text-lg leading-snug text-cream md:text-xl">
-          We grow in California. Small lots, named like outlaws. Lab tested, every batch. Indoor. Single source. Cold cure. The standard doesn't move.
+          Cowboy Grown. Indoor. Single source. Cut for the nose, the smoke, and the leave. SFV rooms. Cold cure. The standard doesn't move.
         </p>
         <p className="display mt-8 max-w-2xl text-3xl text-sand md:text-4xl">
-          Some ropes are for holding on. Ours burned clean through.
+          If it don't slap, it ain't Rope.
         </p>
       </section>
 
-      <TheRide cuts={cuts} />
+      <section className="page-pad mx-auto max-w-[1440px] pb-20">
+        <div className="mb-8">
+          <p className="stamp text-sand">Shop</p>
+          <h2 className="display mt-2 text-section">The Cuts</h2>
+          <p className="mt-3 max-w-md text-ash">ZESTPERADO and Z FUEL. The rest are on The Cuts.</p>
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {cuts.slice(0, 2).map((cut) => (
+            <CutCard key={cut.slug} cut={cut} />
+          ))}
+        </div>
+        <div className="mt-8">
+          <BrandLink to="/cuts" variant="ghost">
+            See more
+          </BrandLink>
+        </div>
+      </section>
 
       <section className="overflow-hidden bg-bone">
         <img
@@ -123,7 +131,7 @@ function Home() {
 
       <section className="page-pad mx-auto max-w-[1440px] grid gap-12 pb-20 lg:grid-cols-2">
         <div>
-          <p className="stamp text-sand">Where to saddle up</p>
+          <p className="stamp text-sand">Locator</p>
           <h2 className="display mt-2 text-section">Find the Rope</h2>
           <p className="mt-4 max-w-md text-ash">
             Buy here, or find a room. Type a city.

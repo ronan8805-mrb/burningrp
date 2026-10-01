@@ -10,9 +10,9 @@ export function Footer() {
       <div className="page-pad mx-auto max-w-[1440px] py-10">
         <div className="max-w-sm">
           <Logo imgClassName="h-16 sm:h-24" />
-          <p className="stamp mt-4 text-sand">Rope untethered</p>
+          <p className="stamp mt-4 text-sand">In Rope We Trust</p>
           <p className="mt-3 text-sm text-ash">
-            In Rope We Trust. Cowboy Grown. If it don't slap, it ain't Rope. 21+.
+            Cowboy Grown. If it don't slap, it ain't Rope. 21+ flower and merch. California adult-use.
           </p>
         </div>
 
@@ -83,16 +83,6 @@ export function Footer() {
               <li>
                 <a href="mailto:iron@burningropepharms.com" className={linkClass}>
                   Email
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/burningropepharms/"
-                  className={linkClass}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Instagram
                 </a>
               </li>
               <li>

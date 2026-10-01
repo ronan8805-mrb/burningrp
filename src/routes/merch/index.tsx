@@ -42,10 +42,10 @@ function MerchPage() {
         />
         <div className="absolute inset-0 bg-bone/70" />
         <div className="page-pad relative z-10 mx-auto max-w-[1440px] py-24">
-          <p className="stamp text-sand">The autumn series</p>
+          <p className="stamp text-sand">The barn</p>
           <h1 className="display mt-3 text-display">Merch</h1>
           <p className="mt-4 max-w-xl text-lg text-cream">
-            Tees, felt, leather, brass, and ceramic. Small runs from the barn. Ships from the shop.
+            Tees, the hat, iron, and barn gear. Ships from the shop. Wear it like the brand — not a costume.
           </p>
         </div>
       </section>
