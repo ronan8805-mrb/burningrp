@@ -91,13 +91,8 @@ export function AgeGate({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className="relative flex h-svh max-h-svh flex-col overflow-hidden bg-bone">
-      <img
-        src="/images/iron-hero.jpg"
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover opacity-50"
-      />
-      <div className="absolute inset-0 bg-linear-to-t from-bone via-bone/80 to-bone/45" />
+    <div className="relative flex h-svh max-h-svh flex-col overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/45 to-black/30" />
 
       {phase === "form" ? (
         <div className="page-pad relative z-10 mx-auto flex h-full w-full max-w-md flex-col justify-center py-6">

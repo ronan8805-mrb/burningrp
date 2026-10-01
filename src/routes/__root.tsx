@@ -6,6 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
 import { PresencePing } from "@/components/presence-ping";
+import { UniverseRide } from "@/components/universe-ride";
 import { NotFoundPage } from "@/components/not-found";
 import appCss from "../styles.css?url";
 
@@ -46,7 +47,9 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-bone text-cream">
+      <body className="text-cream">
+        <UniverseRide />
+        <div className="relative z-10">
         <PreviewHostBridge />
         <AuthProvider>
           <AgeGate>
@@ -59,6 +62,7 @@ function RootDocument() {
             </div>
           </AgeGate>
         </AuthProvider>
+        </div>
         <Scripts />
       </body>
     </html>

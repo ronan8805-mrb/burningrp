@@ -20,13 +20,8 @@ function Home() {
   const { cuts, merch } = useCatalog(Boolean(user));
   return (
     <main>
-      <section className="relative h-svh min-h-[36rem] overflow-hidden">
-        <img
-          src="/images/universe/grounds.jpg"
-          alt="Skeleton cowboy wagon under a burning desert sky"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-black via-black/35 to-black/25" />
+      <section className="relative h-svh min-h-[36rem]">
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-black/25" />
         <div className="page-pad relative z-10 flex h-full max-w-[1440px] mx-auto flex-col justify-end pb-16">
           <p className="stamp text-sand">SFV · Indoor · 21+</p>
           <h1 className="display mt-3 text-mark text-cream">IN ROPE WE TRUST</h1>

@@ -59,13 +59,7 @@
     font-size: var(--text-body);
     line-height: var(--leading-body);
     color: var(--color-cream);
-    background-color: #070403;
-    background-image:
-      linear-gradient(to bottom, rgb(7 4 3 / 0.55), rgb(7 4 3 / 0.72) 30%, rgb(7 4 3 / 0.8)),
-      url("/images/universe/grounds.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center 42%;
+    background: transparent;
   }
 
   button:not(:disabled),
